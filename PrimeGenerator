@@ -1,27 +1,27 @@
-number_of_iterations = int(input())
-iteration_counter = 0
-print_iteration = 0
-primes = []
+number_of_iterations = int(input())  # pobieram od uzytkownika liczbe badanych zbiorow wartosci liczbowych
+iteration_counter = 0  # ta zmienna jest potrzebna do poprawnego pobierania warunkow brzegowych od uzytkownika
+print_iteration = 0  # ta zmienna jest potrzebna do poprawnego drukowania wynikow, zgodnie ze wzorem SPOJ
+primes = []  # lista do przechowywania liczb pierwszych
 
 while number_of_iterations != iteration_counter:
-    user_input = list(map(str, input().split()))
-    lower_boundary = int(user_input[0])
-    upper_boundary = int(user_input[1])
-    counter = 0
+    user_input = list(map(str, input().split()))  # spacja jako separator liczb
+    lower_boundary = int(user_input[0])  # dolny zakres zabioru liczb dla aktualnej iteracji
+    upper_boundary = int(user_input[1])  # gorny zakres
+    counter = 0  # licznik dzielnikow
 
-    for tested_value in range(lower_boundary+1, upper_boundary + 1):
-        for testing_value in range(lower_boundary+1, tested_value + 1):
+    for tested_value in range(lower_boundary + 1, upper_boundary + 1):
+        for testing_value in range(lower_boundary + 1, tested_value + 1):
             if tested_value % testing_value == 0:
                 counter += 1
         if counter == 1:
             primes.append(tested_value)
         counter = 0
     iteration_counter += 1
-    primes.append(0)
+    primes.append(0)  # wartosc 0 oznacza koniec badania kolejnego zbioru liczb
 
 while print_iteration != (len(primes)):
     if primes[print_iteration] != 0:
         print(primes[print_iteration])
     else:
-        print("")
+        print("")  # zamiast wartosci 0 drukujemy pusty wers
     print_iteration += 1
