@@ -1,0 +1,6 @@
+while True:
+    i = eval(input())
+    if i != 42:
+        print(i)
+    else:
+        exit()
